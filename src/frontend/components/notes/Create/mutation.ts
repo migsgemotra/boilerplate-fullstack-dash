@@ -7,7 +7,7 @@ export default gql`
   ) {
     note: create_note(
       title: $title
-      notContent: $noteContent
+      noteContent: $noteContent
     ) {
       _id
     }

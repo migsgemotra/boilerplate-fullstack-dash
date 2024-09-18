@@ -16,14 +16,14 @@ import helmet from 'helmet'
 import next from 'next'
 import { parse } from 'url'
 import { Database } from './backend/_types/database'
-import _dbSetup from './backend/_utils/_dbSetup'
+import _dbSetup, { initializeIndexes } from './backend/_utils/_dbSetup'
 
 import { MongoClient } from 'mongodb'
 import { resolvers, typeDefs } from './backend/modules'
 import { Context } from './backend/_types/context'
 import { verifyJWT } from './backend/_utils/cloudflareJwt'
 
-const MONGODB_URI: string = ''
+const MONGODB_URI: string = 'mongodb+srv://gemotramigs:Phoenix1799!@boilerplateproject.3l7ty.mongodb.net/'
 
 const app = express()
 app.set('trust proxy', true)
@@ -34,19 +34,12 @@ const dev = process.env.NODE_ENV !== 'production'
 const nextJSApp = next({ dir: './src/frontend', dev })
 const handle = nextJSApp.getRequestHandler()
 
-const scriptSrc = [
-  "'self'",
-  'www.gstatic.com',
-  '*.googleapis.com',
-  'https://www.google-analytics.com/analytics.js',
-  'https://www.googletagmanager.com/gtag/js'
-]
-
 nextJSApp.prepare().then(async () => {
   //IF USING CONNECTING A MONGO DATABASE, uncomment out lines below
-  // const mongoClient: MongoClient = await MongoClient.connect(MONGODB_URI)
-  // const db = mongoClient.db('')
-  // const database: Database = _dbSetup(db)
+  const mongoClient: MongoClient = await MongoClient.connect(MONGODB_URI)
+  const db = mongoClient.db('boiler_plate_sample')
+  const database: Database = _dbSetup(db)
+  await initializeIndexes(database)
 
   const server = new ApolloServer({
     typeDefs,
@@ -55,7 +48,7 @@ nextJSApp.prepare().then(async () => {
       const ip = context.req.headers['CF-Connecting-IP'] || context.req.headers['X-Forwarded-For'] || context.req.ip
 
       return {
-        // database,
+        database,
         ip
       }
     },

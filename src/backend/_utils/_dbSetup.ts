@@ -4,6 +4,14 @@ import { Test } from '../_types/test'
 import { User } from '../_types/users'
 import { Note } from '../_types/notes'
 
+export const initializeIndexes = async (database: Database): Promise<void> => {
+  await database.notes.createIndex({
+    name: 'text'
+  })
+
+  return
+}
+
 export default (db: Db): Database => {
   return {
     notes: db.collection<Note>('notes'),

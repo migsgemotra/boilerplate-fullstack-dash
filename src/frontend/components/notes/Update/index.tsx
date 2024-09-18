@@ -33,6 +33,7 @@ const UpdateNoteComponent = (): ReactElement => {
     variables: queryVariables,
     onCompleted: (e: { note: Note }) => {
       setTitle(e.note?.title)
+      setNoteContent(e.note?.noteContent)
     }
   })
 
