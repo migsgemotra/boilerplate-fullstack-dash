@@ -1,0 +1,1 @@
+export default ['CRA', 'INBOUND', 'AFFILIATE', 'DISTRIBUTOR', 'CR CONVERSION', 'REFERRAL']

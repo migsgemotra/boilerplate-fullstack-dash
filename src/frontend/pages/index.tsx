@@ -28,7 +28,6 @@ const Home: NextPage = (): ReactElement => {
       >
         {'Hello, World!'}
       </Typography>
-      <TestComponent />
     </>
   )
 }

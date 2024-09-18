@@ -1,0 +1,10 @@
+export default [
+  'DIAGNOSTICS',
+  'APE',
+  'PEME - OFW',
+  'HOSPITAL',
+  'DISTRIBUTOR',
+  'AGGREGATOR - DISTRIBUTOR',
+  'AGGREGATOR - LABORATORY',
+  'OTHERS'
+]
