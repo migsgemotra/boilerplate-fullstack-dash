@@ -6,7 +6,7 @@ import { Note } from '../_types/notes'
 
 export default (db: Db): Database => {
   return {
-    notes: db.collection.<Note>('notes'),
+    notes: db.collection<Note>('notes'),
     tests: db.collection<Test>('tests'),
     users: db.collection<User>('users')
   }

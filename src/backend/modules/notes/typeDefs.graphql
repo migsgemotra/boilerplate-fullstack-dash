@@ -1,0 +1,46 @@
+type Note {
+  _id: ID!
+  title: String
+  noteContent: String
+  createdAt: Date
+  updatedAt: Date
+  deletedAt: Date
+  deleted: Boolean
+}
+
+extend type Query {
+  notes(
+    limit: Int
+    searchText: String
+    skip: Int
+    sortBy: String
+    sortDirection: SortDirectionType
+  ): [Note]
+
+  note(_id: ID!): Note
+
+  notes_count(
+    limit: Int
+    searchText: String
+    skip: Int
+    sortBy: String
+    sortDirection: SortDirectionType
+  ): Int
+}
+
+extend type Mutation {
+  create_note(
+    title: String
+    noteContent: String
+  ): Note
+
+  update_note(
+    _id: ID!
+    title: String
+    noteContent: String
+  ): Note
+
+  delete_note(
+    _id: ID!
+  ): Note
+}

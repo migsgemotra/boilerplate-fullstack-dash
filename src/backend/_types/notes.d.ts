@@ -4,7 +4,7 @@ import { SortDirectionType } from './enums/sortDirectionType'
 export interface Note {
   _id?: ObjectId
   title?: string
-  note?: string
+  noteContent?: string
   createdAt?: Date
   updatedAt?: Date
   deletedAt?: Date
@@ -25,15 +25,15 @@ export interface NoteArgs {
 
 export interface CreateNoteArgs {
   title?: string
-  note?: string
+  noteContent?: string
 }
 
 export interface UpdateNoteArgs {
   _id?: string
   title?: string
-  note?: string
+  noteContent?: string
 }
 
-export interface DeleteLeadArgs {
+export interface DeleteNoteArgs {
   _id?: string
 }
