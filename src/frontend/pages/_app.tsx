@@ -61,7 +61,7 @@ class MyApp extends App {
       <>
         <CacheProvider value={emotionCache}>
           <Head>
-            <title>{'App Boilerplate'}</title>
+            <title>{'Boilerplate'}</title>
             <meta
               name={'viewport'}
               content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'}

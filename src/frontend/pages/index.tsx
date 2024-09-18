@@ -1,22 +1,22 @@
 import { NextPage } from 'next'
 import { Typography, Box } from '@mui/material'
 import React, { ReactElement } from 'react'
-import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
-import TestComponent from 'frontend/components/testComponent'
-import Image from "next/image";
 import pata from '../public/static/pata.png'
+import PageNavigation from 'frontend/components/_common/PageNavigation'
+import { Edit } from '@mui/icons-material'
+import layout from 'frontend/layouts/layout';
+import Image from "next/image";
 
 const Home: NextPage = (): ReactElement => {
   return (
     <>
-      <AppBarComponent title={'Project Boilerplate'} />
-      <Box
-        component={Image}
-        height={"100px"}
-        width={"auto"}
-        alt={""}
-        src={pata}
-      />
+    <Box
+      component={Image}
+      height={"100px"}
+      width={"auto"}
+      alt={""}
+      src={pata}
+    />
       <Typography
         color={'textPrimary'}
         variant={'h4'}
@@ -26,8 +26,21 @@ const Home: NextPage = (): ReactElement => {
           })
         }}
       >
-        {'Hello, World!'}
+        {'Hello world!'}
       </Typography>
+      <PageNavigation
+        routes={[
+          {
+            primary: 'Create Note',
+            secondary: 'Create a note',
+            icon: <Edit />,
+            href: {
+              pathname: '/notes/create',
+              query: {}
+            }
+          }
+        ]}
+      />
     </>
   )
 }

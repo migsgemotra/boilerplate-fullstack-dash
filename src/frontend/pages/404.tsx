@@ -1,12 +1,10 @@
 import { NextPage } from 'next'
 import { Typography } from '@mui/material'
 import React, { ReactElement } from 'react'
-import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 
 const NotFoundPage: NextPage = (): ReactElement => {
   return (
     <>
-      <AppBarComponent title={'Project template'} backRoute='/' />
       <Typography
         color={'textPrimary'}
         variant={'h4'}

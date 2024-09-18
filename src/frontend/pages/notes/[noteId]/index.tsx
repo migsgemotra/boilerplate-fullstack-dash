@@ -6,6 +6,7 @@ import { Note, NoteArgs } from 'backend/_types/notes'
 import { useQuery, gql } from '@apollo/client'
 import PageNavigation from 'frontend/components/_common/PageNavigation'
 import { DeleteOutline, Edit } from '@mui/icons-material'
+import layout from 'frontend/layouts/layout'
 
 const query = gql`
   query NoteUpdatePageQuery($_id: ID!) {
@@ -74,4 +75,4 @@ const NotePage: NextPage = (): ReactElement => {
   )
 }
 
-export default NotePage
+export default layout(NotePage)

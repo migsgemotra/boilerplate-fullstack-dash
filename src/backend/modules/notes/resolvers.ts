@@ -2,7 +2,7 @@ import { Context } from 'backend/_types/context'
 import { Note } from 'backend/_types/notes'
 
 export default {
-  Lead: {
+  Note: {
     __resolveReference: async (note: Note, context: Context): Promise<Note> => {
       if (!note._id) {
         return null

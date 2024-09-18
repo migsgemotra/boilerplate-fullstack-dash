@@ -2,6 +2,7 @@ import React, { ReactElement } from 'react'
 import { NextPage } from 'next'
 import CreateNoteComponent from '../../components/notes/Create'
 import PageHeader from '../../components/_common/PageHeader'
+import layout from 'frontend/layouts/layout'
 
 const CreateNotePage: NextPage = (): ReactElement => {
 
@@ -24,4 +25,4 @@ const CreateNotePage: NextPage = (): ReactElement => {
   )
 }
 
-export default CreateNotePage
+export default layout(CreateNotePage)
