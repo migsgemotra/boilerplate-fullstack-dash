@@ -19,7 +19,7 @@ import { Database } from './backend/_types/database'
 import _dbSetup from './backend/_utils/_dbSetup'
 
 import { MongoClient } from 'mongodb'
-import { resolvers, typeDefs } from './backend/controllers'
+import { resolvers, typeDefs } from './backend/modules'
 import { Context } from './backend/_types/context'
 import { verifyJWT } from './backend/_utils/cloudflareJwt'
 

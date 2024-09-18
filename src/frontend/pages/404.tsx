@@ -6,7 +6,7 @@ import AppBarComponent from '../layouts/moduleViewer/AppBarComponent'
 const NotFoundPage: NextPage = (): ReactElement => {
   return (
     <>
-      <AppBarComponent title='Project Boilerplate' backRoute='/' />
+      <AppBarComponent title={'Project template'} backRoute='/' />
       <Typography
         color={'textPrimary'}
         variant={'h4'}

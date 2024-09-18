@@ -9,7 +9,6 @@ import Head from 'next/head'
 import dynamic from 'next/dynamic'
 
 import { ThemeProvider } from '@mui/material/styles'
-import darkTheme from '../themes/darkTheme'
 import theme from '../themes/theme'
 
 import { ApolloProvider } from '@apollo/client'
@@ -68,7 +67,7 @@ class MyApp extends App {
               content={'minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'}
             />
           </Head>
-          <ThemeProvider theme={globalAny.darkTheme ? darkTheme : theme}>
+          <ThemeProvider theme={theme}>
             <CssBaseline />
             <ApolloProvider client={client}>
               <Component {...pageProps} />

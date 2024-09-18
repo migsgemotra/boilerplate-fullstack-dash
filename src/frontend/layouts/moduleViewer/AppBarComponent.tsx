@@ -4,7 +4,7 @@ const globalAny: any = global
 import React, { ReactElement } from 'react'
 import { useRouter } from 'next/router'
 import IconButton from '@mui/material/IconButton'
-import { AppBar, Toolbar } from '@mui/material'
+import { AppBar, Toolbar, Box } from '@mui/material'
 import ArrowLeftIcon from '@mui/icons-material/ArrowBackIos'
 import Typography from '@mui/material/Typography'
 
