@@ -1,6 +1,1 @@
-1. Clean up the pages folder
-- app
-- document
-- index
-
-2. clean up the src/index.ts
+1. implement log in log out

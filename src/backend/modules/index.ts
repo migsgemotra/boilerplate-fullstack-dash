@@ -1,4 +1,3 @@
-import sample from './sample'
 import notes from './notes'
 import { gql } from 'apollo-server-express'
 
@@ -13,6 +12,6 @@ const emptyDefs = gql`
   }
 `
 
-export const resolvers = [sample.resolvers, notes.resolvers]
+export const resolvers = [notes.resolvers]
 
-export const typeDefs = [emptyDefs, sample.typeDefs, notes.typeDefs]
+export const typeDefs = [emptyDefs, notes.typeDefs]
