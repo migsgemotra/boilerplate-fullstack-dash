@@ -1,92 +1,43 @@
-import React, { ReactElement } from 'react'
-import Document, { Head, Html, Main, NextScript } from 'next/document'
-import createEmotionServer from '@emotion/server/create-instance'
-import createEmotionCache from '../_utils/createEmotionCache'
+import {
+  DocumentHeadTags,
+  DocumentHeadTagsProps,
+  documentGetInitialProps,
+} from '@mui/material-nextjs/v14-pagesRouter';
+import { Html, Head, Main, NextScript, DocumentContext, DocumentProps } from "next/document";
 
-import theme from '../themes/theme'
-
-class MyDocument extends Document {
-  render(): ReactElement {
-    return (
-      <Html>
-        <Head>
-          <meta charSet={'utf-8'} />
-          {/* <meta name={'description'} content={''} /> */}
-          <meta name={'theme-color'} content={theme.palette.primary.main} />
-          {/* <meta property={'og:title'} content={''} /> */}
-          <meta property={'og:type'} content={'website'} />
-          {/* <meta property={'og:url'} content={''} /> */}
-          {/* <meta property={'og:description'} content={''} /> */}
-          {/* <meta property={'og:image'} content={''} /> */}
-          {/* <link rel={'icon'} type={'image/x-icon'} href={''} /> */}
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+export default function Document(props: DocumentProps & DocumentHeadTagsProps) {
+	return (
+		<Html lang="en">
+			<Head>
+				<title>{"Monorepo Boilerplate"}</title>
+				<meta property={"og:title"} content={"Monorepo Boilerplate"} />
+				<meta property={"og:url"} content={"https://"} />
+				<meta
+					property={"og:image"}
+					content={""}
+				/>
+				<link
+					rel={"shortcut icon"}
+					type={"image/x-icon"}
+					href={""}
+				/>
+				<link
+					href={""}
+					rel={"apple-touch-icon"}
+				/>
+				<meta name="theme-color" content={"#1665FF"} />
+				<meta name="emotion-insertion-point" content="" />
+				<DocumentHeadTags {...props} />
+			</Head>
+			<body>
+				<Main />
+				<NextScript />
+			</body>
+		</Html>
+	);
 }
 
-// `getInitialProps` belongs to `_document` (instead of `_app`),
-// it's compatible with static-site generation (SSG).
-MyDocument.getInitialProps = async (ctx) => {
-  // Resolution order
-  //
-  // On the server:
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. document.getInitialProps
-  // 4. app.render
-  // 5. page.render
-  // 6. document.render
-  //
-  // On the server with error:
-  // 1. document.getInitialProps
-  // 2. app.render
-  // 3. page.render
-  // 4. document.render
-  //
-  // On the client
-  // 1. app.getInitialProps
-  // 2. page.getInitialProps
-  // 3. app.render
-  // 4. page.render
-
-  const originalRenderPage = ctx.renderPage
-
-  // You can consider sharing the same Emotion cache between all the SSR requests to speed up performance.
-  // However, be aware that it can have global side effects.
-  const cache = createEmotionCache()
-  const { extractCriticalToChunks } = createEmotionServer(cache)
-
-  ctx.renderPage = () =>
-    originalRenderPage({
-      //eslint-disable-next-line
-      enhanceApp: (App: any) =>
-        function EnhanceApp(props) {
-          return <App emotionCache={cache} {...props} />
-        }
-    })
-
-  const initialProps = await Document.getInitialProps(ctx)
-  // This is important. It prevents Emotion to render invalid HTML.
-  // See https://github.com/mui/material-ui/issues/26561#issuecomment-855286153
-  const emotionStyles = extractCriticalToChunks(initialProps.html)
-  const emotionStyleTags = emotionStyles.styles.map((style) => (
-    <style
-      data-emotion={`${style.key} ${style.ids.join(' ')}`}
-      key={style.key}
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: style.css }}
-    />
-  ))
-
-  return {
-    ...initialProps,
-    emotionStyleTags
-  }
-}
-
-export default MyDocument
+Document.getInitialProps = async (ctx: DocumentContext) => {
+  const finalProps = await documentGetInitialProps(ctx);
+  return finalProps;
+};
