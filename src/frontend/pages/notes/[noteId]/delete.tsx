@@ -5,7 +5,6 @@ import PageHeader from '../../../components/_common/PageHeader'
 import { Note, NoteArgs } from 'backend/_types/notes'
 import { useQuery, gql } from '@apollo/client'
 import DeleteNoteComponent from 'frontend/components/notes/Delete'
-import layout from 'frontend/layouts/layout'
 
 const query = gql`
   query NoteUpdatePageQuery($_id: ID!) {
@@ -58,4 +57,4 @@ const DeleteNotePage: NextPage = (): ReactElement => {
   )
 }
 
-export default layout(DeleteNotePage)
+export default DeleteNotePage

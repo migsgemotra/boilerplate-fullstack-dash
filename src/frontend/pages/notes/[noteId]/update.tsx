@@ -5,7 +5,6 @@ import PageHeader from '../../../components/_common/PageHeader'
 import UpdatenNoteComponent from 'frontend/components/notes/Update'
 import { Note, NoteArgs } from 'backend/_types/notes'
 import { useQuery, gql } from '@apollo/client'
-import layout from 'frontend/layouts/layout'
 
 const query = gql`
   query NoteUpdatePageQuery($_id: ID!) {
@@ -58,4 +57,4 @@ const UpdateNotePage: NextPage = (): ReactElement => {
   )
 }
 
-export default layout(UpdateNotePage)
+export default UpdateNotePage

@@ -1,7 +1,9 @@
 import NextLink from "./NextLink";
 import { AppBar, Toolbar, Box, Button } from "@mui/material";
+import { useRouter } from 'next/router';
 
 const NavBar = () => {
+  const router = useRouter()
 	return (
 		<>
 			<AppBar
@@ -19,8 +21,14 @@ const NavBar = () => {
 						variant={"contained"}
 						color={"inherit"}
 						sx={{ mr: 1 }}
+						onClick={() => {
+							router.push({
+								pathname: '/notes',
+								query: {}
+							})
+						}}
 					>
-						{"Sign In"}
+						{"Notes"}
 					</Button>
 				</Toolbar>
 			</AppBar>
