@@ -2,7 +2,6 @@ import { Context } from '../../../_types/context'
 import { ObjectId } from 'mongodb'
 
 import { User, UpdateUserArgs } from 'backend/_types/users'
-import e from 'express'
 
 export default async (_root: undefined, args: UpdateUserArgs, context: Context): Promise<User> => {
   const {

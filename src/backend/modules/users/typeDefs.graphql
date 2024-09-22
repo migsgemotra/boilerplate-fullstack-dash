@@ -28,10 +28,20 @@ extend type Query {
 
 extend type Mutation {
   create_user(
+    email: string
+    username: string
+    password: string
   ): User
 
+  login_user(
+    email: string
+    password: string
+  ): User
   update_user(
     _id: ID!
+    email: string
+    username: string
+    password: string
   ): User
 
   delete_user(

@@ -26,6 +26,10 @@ export interface CreateUserArgs {
   password: string
 }
 
+export interface LogInUserArgs {
+  email: string
+  password: string
+}
 export interface UpdateUserArgs {
   _id: string
   email: string
